@@ -1,2 +1,6 @@
 examples/
-out/
+classifier.c
+classifier.o
+classifier.h
+simplifier
+scripts/
