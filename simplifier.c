@@ -28,6 +28,7 @@ int main(int argc, char **argv) {
             break;
 
         case 'c':
+        /* Nie wiem czy w tc podstawa jest 16, czy 10, ale żadna nie działa */
             bytes = strtoul(argv[3], &separator, 16) << 16 | strtoul(separator + 1, 0, 16);
             p = (void*)&bytes;
             printf("%02X %02X %02X %02X", p[0], p[1], p[2], p[3]);
