@@ -2,6 +2,7 @@
 
 tc qdisc del dev $1 root 2>/dev/null || true
 tc qdisc del dev $1 clsact 2>/dev/null || true
+tc filter del dev $1 egress
 
 tc qdisc add dev $1 clsact
 
@@ -11,7 +12,7 @@ tc class add dev $1 parent 1:1 classid 1:10 htb rate 50mbit ceil 100mbit
 tc class add dev $1 parent 1:1 classid 1:20 htb rate 30mbit ceil 100mbit
 tc class add dev $1 parent 1:1 classid 1:30 htb rate 20mbit ceil 100mbit
 
-tc filter add dev $1 parent 1: protocol ip prio 1 bpf da obj classifier.o sec tc
+tc filter add dev $1 egress protocol ip prio 1 bpf da obj classifier.o sec tc
 
 # tc qdisc add dev $1 parent 1:10 handle 10: sfq perturb 10
 # tc qdisc add dev $1 parent 1:20 handle 20: sfq perturb 10

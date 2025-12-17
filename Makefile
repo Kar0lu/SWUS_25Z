@@ -12,7 +12,7 @@ all: $(OBJ) simplifier
 
 $(C_SRC): $(P4_SRC)
 	p4c-ebpf -o $(C_SRC) $(P4_SRC) --emit-externs
-	sed -i 's/#include "ebpf_kernel.h"/#include "ebpf_kernel.h"\n#define set_tc_priority(maj,min) (skb->tc_classid = TC_H_MAKE((maj),(min)))/' $(C_SRC)
+	sed -i 's/#include "ebpf_kernel.h"/#include "ebpf_kernel.h"\n#define set_tc_priority(maj,min) (skb->tc_classid = TC_H_MAKE((maj<<16),(min)))/' $(C_SRC)
 
 $(OBJ): $(C_SRC)
 # 	clang $(CLANG_FLAGS) $(C_SRC) -o $(OBJ)
