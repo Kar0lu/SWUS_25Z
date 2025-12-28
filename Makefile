@@ -11,7 +11,7 @@ all: $(OBJ)
 
 $(C_SRC): $(P4_SRC)
 	p4c-ebpf -o $(C_SRC) $(P4_SRC) --emit-externs
-	sed -i 's/#include "ebpf_kernel.h"/#include "ebpf_kernel.h"\n#define set_tc_priority(class) (skb->tc_classid = (class))/' $(C_SRC)
+	sed -i 's/#include "ebpf_kernel.h"/#include "ebpf_kernel.h"\n#define set_tc_classid(class) (skb->tc_classid = (class))/' $(C_SRC)
 
 $(OBJ): $(C_SRC)
 # 	clang $(CLANG_FLAGS) $(C_SRC) -o $(OBJ)
