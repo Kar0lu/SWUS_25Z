@@ -15,7 +15,7 @@ $SCRIPT_DIR/test.sh
 $SCRIPT_DIR/clear.sh
 
 
-# Stare rzeczy, ale mogą się przydać jeszcześ
+# Stare rzeczy, ale mogą się przydać jeszcze
 
 # bpftool map show
 # tc -s class show dev $1
